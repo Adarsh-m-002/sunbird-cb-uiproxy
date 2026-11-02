@@ -7914,7 +7914,15 @@ export const API_LIST = {
                 ROLE.VOLUNTEER,
             ],
         },
-        '/proxies/v8/formsConfig/v1/readFormDetails': {
+        '/proxies/v8/formsConfig/v1/readFormDetails/portal': {
+            checksNeeded: [CHECK.ROLE],
+            // tslint:disable-next-line: object-literal-sort-keys
+            ROLE_CHECK: [
+                ROLE.PUBLIC,
+                ROLE.VOLUNTEER,
+            ],
+        },
+        '/proxies/v8/formsConfig/v1/readFormDetails/mobile': {
             checksNeeded: [CHECK.ROLE],
             // tslint:disable-next-line: object-literal-sort-keys
             ROLE_CHECK: [
@@ -9541,7 +9549,8 @@ export const API_LIST = {
             '/proxies/v8/formsConfig/v1/create',
             '/proxies/v8/formsConfig/v1/read',
             '/proxies/v8/formsConfig/v1/readById/:id',
-            '/proxies/v8/formsConfig/v1/readFormDetails',
+            '/proxies/v8/formsConfig/v1/readFormDetails/portal',
+            '/proxies/v8/formsConfig/v1/readFormDetails/mobile',
             '/proxies/v8/formsConfig/v1/update',
             '/proxies/v8/org/v1/status/update',
             '/proxies/v8/course/v2/unenroll',
