@@ -16,6 +16,7 @@ import { getSessionConfig } from './configs/session.config'
 import { protectedApiV8 } from './protectedApi_v8/protectedApiV8'
 import { proxiesV8 } from './proxies_v8/proxies_v8'
 import { publicApiV8 } from './publicApi_v8/publicApiV8'
+import { refreshCampaignMicrositeConfigHandler } from './utils/campaignMicrositeConfig'
 import { CustomKeycloak } from './utils/custom-keycloak'
 import { CONSTANTS } from './utils/env'
 import { logDebug, logError, logSuccess } from './utils/logger'
@@ -64,6 +65,7 @@ export class Server {
     }
     this.setKeyCloak(sessionConfig)
     this.configureLogLevelControl()
+    this.configureCampaignMicrositeAdmin()
     this.authoringProxies()
     this.setExtFormsFramework()
     this.servePublicApi()
@@ -100,6 +102,13 @@ export class Server {
         void resetLogLevelHandler(req, res)
       })
     }
+  }
+
+  private configureCampaignMicrositeAdmin() {
+    // Not under keycloak: only reachable from inside the pod (kubectl exec + curl localhost)
+    this.app.post('/internal/v8/campaign-microsite/refresh', (req, res) => {
+      void refreshCampaignMicrositeConfigHandler(req, res)
+    })
   }
 
   private setCookie() {
