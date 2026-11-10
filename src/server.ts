@@ -58,6 +58,8 @@ export class Server {
     this.app.use(expressSession(sessionConfig))
     this.app.use(express.urlencoded({ extended: false, limit: '50mb' }))
     this.app.use(express.json({ limit: '50mb' }))
+    // Registered before apiWhiteListLogger/isAllowed: loopback-only, no portal session involved
+    this.configureCampaignMicrositeAdmin()
     this.setCookie()
     this.app.all('*', apiWhiteListLogger())
     if (CONSTANTS.PORTAL_API_WHITELIST_CHECK === 'true') {
@@ -65,7 +67,6 @@ export class Server {
     }
     this.setKeyCloak(sessionConfig)
     this.configureLogLevelControl()
-    this.configureCampaignMicrositeAdmin()
     this.authoringProxies()
     this.setExtFormsFramework()
     this.servePublicApi()
@@ -105,7 +106,7 @@ export class Server {
   }
 
   private configureCampaignMicrositeAdmin() {
-    // Not under keycloak: only reachable from inside the pod (kubectl exec + curl localhost)
+    // Not under keycloak or the API whitelist: only reachable from inside the pod (kubectl exec + curl localhost)
     this.app.post('/internal/v8/campaign-microsite/refresh', (req, res) => {
       void refreshCampaignMicrositeConfigHandler(req, res)
     })
