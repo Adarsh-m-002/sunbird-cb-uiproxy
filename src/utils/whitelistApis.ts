@@ -8643,7 +8643,7 @@ export const API_LIST = {
                ROLE.SPV_ADMIN,
             ],
         },
-        '/proxies/v8/cios-enroll/lti/redirect': {
+        '/proxies/v8/cios-enroll/lti/redirect/:providerId/:courseId': {
             checksNeeded: [CHECK.ROLE],
             // tslint:disable-next-line: object-literal-sort-keys
             ROLE_CHECK: [
@@ -9729,6 +9729,6 @@ export const API_LIST = {
             '/proxies/v8/contentpartner/v2/update',
             '/proxies/v8/contentpartner/v2/create',
             '/proxies/v8/ciosIntegration/lti/ssotest/:partnerCode',
-            '/proxies/v8/cios-enroll/lti/redirect',
+            '/proxies/v8/cios-enroll/lti/redirect/:providerId/:courseId',
         ],
 }
