@@ -7607,6 +7607,8 @@ export const API_LIST = {
             // tslint:disable-next-line: object-literal-sort-keys
             ROLE_CHECK: [
                 ROLE.AI_ASSESSMENT_CREATOR,
+                ROLE.MDO_ADMIN,
+                ROLE.MDO_LEADER,
             ],
         },
         '/proxies/v8/ai/assessments/v1/status/:id': {
@@ -7614,6 +7616,8 @@ export const API_LIST = {
             // tslint:disable-next-line: object-literal-sort-keys
             ROLE_CHECK: [
                 ROLE.AI_ASSESSMENT_CREATOR,
+                ROLE.MDO_ADMIN,
+                ROLE.MDO_LEADER,
             ],
         },
         '/proxies/v8/ai/assessments/v1/history': {
@@ -7621,6 +7625,8 @@ export const API_LIST = {
             // tslint:disable-next-line: object-literal-sort-keys
             ROLE_CHECK: [
                 ROLE.AI_ASSESSMENT_CREATOR,
+                ROLE.MDO_ADMIN,
+                ROLE.MDO_LEADER,
             ],
         },
         '/proxies/v8/ai/cbp/v1/mdo/approval-requests/list': {
@@ -7960,6 +7966,14 @@ export const API_LIST = {
             ],
         },
         '/proxies/v8/formsConfig/v1/readById/:id': {
+            checksNeeded: [CHECK.ROLE],
+            // tslint:disable-next-line: object-literal-sort-keys
+            ROLE_CHECK: [
+                ROLE.PUBLIC,
+                ROLE.VOLUNTEER,
+            ],
+        },
+        '/proxies/v8/formsConfig/v1/readByIdForTest/:id': {
             checksNeeded: [CHECK.ROLE],
             // tslint:disable-next-line: object-literal-sort-keys
             ROLE_CHECK: [
@@ -9773,6 +9787,7 @@ export const API_LIST = {
             '/proxies/v8/formsConfig/v1/create',
             '/proxies/v8/formsConfig/v1/read',
             '/proxies/v8/formsConfig/v1/readById/:id',
+            '/proxies/v8/formsConfig/v1/readByIdForTest/:id',
             '/proxies/v8/formsConfig/v1/readFormDetails/portal',
             '/proxies/v8/formsConfig/v1/readFormDetails/mobile',
             '/proxies/v8/formsConfig/v1/update',
