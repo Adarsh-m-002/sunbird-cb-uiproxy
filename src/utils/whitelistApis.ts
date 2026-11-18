@@ -8649,6 +8649,34 @@ export const API_LIST = {
             ROLE_CHECK: [
               ROLE.PUBLIC,
             ],
+        },
+        '/proxies/v8/accessSettings/provider/v1/upsert': {
+            checksNeeded: [CHECK.ROLE],
+            // tslint:disable-next-line: object-literal-sort-keys
+            ROLE_CHECK: [
+                ROLE.SPV_ADMIN,
+            ],
+        },  
+        '/proxies/v8/accessSettings/provider/v1/read/:partnerId': {
+            checksNeeded: [CHECK.ROLE],
+            // tslint:disable-next-line: object-literal-sort-keys
+            ROLE_CHECK: [
+                ROLE.SPV_ADMIN,
+            ],
+        },
+        '/proxies/v8/accessSettings/provider/v1/notification/upsert': {
+            checksNeeded: [CHECK.ROLE],
+            // tslint:disable-next-line: object-literal-sort-keys
+            ROLE_CHECK: [
+                ROLE.SPV_ADMIN,
+            ],
+        },
+        '/proxies/v8/accessSettings/provider/v1/notification/read/:partnerId': {
+            checksNeeded: [CHECK.ROLE],
+            // tslint:disable-next-line: object-literal-sort-keys
+            ROLE_CHECK: [
+                ROLE.SPV_ADMIN,
+            ],
         },            
 
     },
@@ -9730,5 +9758,9 @@ export const API_LIST = {
             '/proxies/v8/contentpartner/v2/create',
             '/proxies/v8/ciosIntegration/lti/ssotest/:partnerCode',
             '/proxies/v8/cios-enroll/lti/redirect/:providerId/:courseId',
+            '/proxies/v8/accessSettings/provider/v1/upsert',
+            '/proxies/v8/accessSettings/provider/v1/read/:partnerId',
+            '/proxies/v8/accessSettings/provider/v1/notification/upsert',
+            '/proxies/v8/accessSettings/provider/v1/notification/read/:partnerId',
         ],
 }
