@@ -10,6 +10,9 @@ const ENV_KEYS = [
   'MNRE_PORTAL_HOST',
   'MNRE_REDIRECT_PATH',
   'MNRE_DESTINATION_PORTAL_HOST',
+  'SSM_PORTAL_HOST',
+  'SSM_REDIRECT_PATH',
+  'SSM_DESTINATION_PORTAL_HOST',
 ]
 
 const originalEnv: Record<string, string | undefined> = {}
